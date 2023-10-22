@@ -1,13 +1,9 @@
+import rentacar.logging.FileLogger;
+import rentacar.logging.Logger;
+
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("Hello world!");
-
-        System.out.println("Hello world!");
-
-        System.out.println("Hello world!");
-
-        System.out.println("Hello world!");
-
+        Logger logger = FileLogger.getInstance();
+        logger.logEvent("Logging was successfully.");
     }
 }
