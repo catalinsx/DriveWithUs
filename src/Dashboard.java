@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Dashboard {
     private JPanel dashboardPanel;
@@ -10,6 +12,18 @@ public class Dashboard {
 
     public Dashboard(){
         // test;
+        searchForACarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame carsFrame = new JFrame("Cars");
+                ListofCars listofCars = new ListofCars();
+                carsFrame.setContentPane(listofCars.panel1);
+                carsFrame.setSize(1920, 1080);
+                carsFrame.setResizable(false);
+                carsFrame.setLocationRelativeTo(null);
+                carsFrame.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
