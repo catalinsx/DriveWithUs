@@ -8,13 +8,31 @@ public class Dashboard {
     private JPanel dashboardPanel;
     private JLabel imageLabel;
     private JLabel imageLogoLabel;
-    private JComboBox comboBox1;
+    private JComboBox ClassComboBox;
     private JCheckBox doYouHaveACheckBox;
     private JButton searchForACarButton;
     private JLabel adminIcon;
+    private JComboBox BrandComboBox;
+    private JComboBox GearBoxComboBox;
+    private JComboBox TractionComboBox;
+    private JComboBox FuelTypeComboBox;
 
     public Dashboard(){
         // test;
+        ClassComboBox.addItem("Luxury");
+        ClassComboBox.addItem("Sport");
+        ClassComboBox.addItem("Premium");
+
+        GearBoxComboBox.addItem("Manual Transmission");
+        GearBoxComboBox.addItem("Automatic Transmission");
+
+        TractionComboBox.addItem("Front-Wheel Drive - FWD");
+        TractionComboBox.addItem("Rear-Wheel Drive - RWD");
+        TractionComboBox.addItem("All-Wheel Drive - AWD");
+
+        FuelTypeComboBox.addItem("Petrol");
+        FuelTypeComboBox.addItem("Diesel");
+        FuelTypeComboBox.addItem("Hybrid");
         adminIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
