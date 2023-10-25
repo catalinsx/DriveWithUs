@@ -16,10 +16,6 @@ public class Booking {
         this.days=days;
         this.customer = customer;
         this.price = vehicle.calculateRentalCost(days);
-        if(!customer.isOneYearExperience())
-        {
-            this.price = this.price + this.price * 0.25;
-        }
     }
     public String getPickUpDate() {
         return pickUpDate;
@@ -38,8 +34,5 @@ public class Booking {
     }
     public void setPrice()
     {
-        this.price=vehicle.calculateRentalCost(days);
-        if(!customer.isOneYearExperience())
-            this.price = this.price + this.price * 0.25;
     }
 }
