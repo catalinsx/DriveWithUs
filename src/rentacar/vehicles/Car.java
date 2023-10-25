@@ -1,15 +1,32 @@
 package rentacar.vehicles;
 
-public class Car extends Vehicle{
-    private int numberOfSeats;
-    private boolean isAutomatic;
-    public Car(String registrationNumber, String brand, String model, int year, double dailyPrice, int numberOfSeats, boolean isAutomatic) {
-        super(registrationNumber, brand, model, year, dailyPrice);
-        this.numberOfSeats = numberOfSeats;
-        this.isAutomatic = isAutomatic;
+abstract class Car implements RentalCostCalculator{
+    private double pricePerDay;
+    private String classCar;
+    private String brand;
+    private String model;
+    private boolean gearBox; //Manuala-0 , automata-1
+    private String Traction;
+    private String fuelType;
+    private boolean oneYearExperience; // true/false
+    public Car(String classCar,String brand,String model, boolean gearBox,String Traction,String fuelType,double pricePerDay,boolean oneYearExperience){
+        this.classCar = classCar;
+        this.brand = brand;
+        this.model = model;
+        this.gearBox = gearBox;
+        this.Traction = Traction;
+        this.fuelType = fuelType;
+        this.pricePerDay = pricePerDay;
+        this.oneYearExperience = oneYearExperience;
     }
-    @Override
-    public double calculateRentalCost(int days){
-        return days*getDailyPrice();
+    public boolean getOneYearExperience(){
+        return oneYearExperience;
     }
+    public double getPricePerDay(){
+        return pricePerDay;
+    }
+    public void setPricePerDay(double newPrice){
+        this.pricePerDay=newPrice;
+    }
+    public abstract double calculateRentalCost(int days);
 }
