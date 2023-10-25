@@ -1,4 +1,4 @@
-package rentacar.vehicles;
+package rentacar.cars;
 
 public class Motorcycle extends Vehicle{
     private int enginePower;
