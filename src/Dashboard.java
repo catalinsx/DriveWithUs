@@ -8,31 +8,31 @@ public class Dashboard {
     private JPanel dashboardPanel;
     private JLabel imageLabel;
     private JLabel imageLogoLabel;
-    private JComboBox ClassComboBox;
+    private JComboBox<String> classComboBox;
     private JCheckBox doYouHaveACheckBox;
     private JButton searchForACarButton;
     private JLabel adminIcon;
-    private JComboBox BrandComboBox;
-    private JComboBox GearBoxComboBox;
-    private JComboBox TractionComboBox;
-    private JComboBox FuelTypeComboBox;
+    private JComboBox<String> brandComboBox;
+    private JComboBox<String> gearBoxComboBox;
+    private JComboBox<String> tractionComboBox;
+    private JComboBox<String> fuelTypeComboBox;
 
     public Dashboard(){
         // test;
-        ClassComboBox.addItem("Luxury");
-        ClassComboBox.addItem("Sport");
-        ClassComboBox.addItem("Premium");
+        classComboBox.addItem("Luxury");
+        classComboBox.addItem("Sport");
+        classComboBox.addItem("Premium");
 
-        GearBoxComboBox.addItem("Manual Transmission");
-        GearBoxComboBox.addItem("Automatic Transmission");
+        gearBoxComboBox.addItem("Manual");
+        gearBoxComboBox.addItem("Automatic");
 
-        TractionComboBox.addItem("Front-Wheel Drive - FWD");
-        TractionComboBox.addItem("Rear-Wheel Drive - RWD");
-        TractionComboBox.addItem("All-Wheel Drive - AWD");
+        tractionComboBox.addItem("Front-Wheel Drive - FWD");
+        tractionComboBox.addItem("Rear-Wheel Drive - RWD");
+        tractionComboBox.addItem("All-Wheel Drive - AWD");
 
-        FuelTypeComboBox.addItem("Petrol");
-        FuelTypeComboBox.addItem("Diesel");
-        FuelTypeComboBox.addItem("Hybrid");
+        fuelTypeComboBox.addItem("Petrol");
+        fuelTypeComboBox.addItem("Diesel");
+        fuelTypeComboBox.addItem("Hybrid");
         adminIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

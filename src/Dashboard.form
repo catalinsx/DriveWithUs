@@ -32,7 +32,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="78986" class="javax.swing.JComboBox" binding="ClassComboBox">
+          <component id="78986" class="javax.swing.JComboBox" binding="classComboBox">
             <constraints>
               <grid row="4" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -56,7 +56,7 @@
               <text value="Brand"/>
             </properties>
           </component>
-          <component id="abb7f" class="javax.swing.JComboBox" binding="BrandComboBox">
+          <component id="abb7f" class="javax.swing.JComboBox" binding="brandComboBox">
             <constraints>
               <grid row="6" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -71,7 +71,7 @@
               <text value="Gearbox"/>
             </properties>
           </component>
-          <component id="3b693" class="javax.swing.JComboBox" binding="GearBoxComboBox">
+          <component id="3b693" class="javax.swing.JComboBox" binding="gearBoxComboBox">
             <constraints>
               <grid row="8" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -86,7 +86,7 @@
               <text value="Traction"/>
             </properties>
           </component>
-          <component id="a19f1" class="javax.swing.JComboBox" binding="TractionComboBox">
+          <component id="a19f1" class="javax.swing.JComboBox" binding="tractionComboBox">
             <constraints>
               <grid row="10" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -101,7 +101,7 @@
               <text value="Fuel Type"/>
             </properties>
           </component>
-          <component id="251ba" class="javax.swing.JComboBox" binding="FuelTypeComboBox">
+          <component id="251ba" class="javax.swing.JComboBox" binding="fuelTypeComboBox">
             <constraints>
               <grid row="12" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
