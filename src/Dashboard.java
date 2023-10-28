@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import rentacar.vehicles.*;
 public class Dashboard {
     private JPanel dashboardPanel;
     private JLabel imageLabel;
@@ -23,6 +23,20 @@ public class Dashboard {
         classComboBox.addItem("Sport");
         classComboBox.addItem("Premium");
 
+        brandComboBox.addItem("Any");
+        brandComboBox.addItem("Acura");
+        brandComboBox.addItem("Alfa Romeo");
+        brandComboBox.addItem("Audi");
+        brandComboBox.addItem("BMW");
+        brandComboBox.addItem("Cadillac");
+        brandComboBox.addItem("Jaguar");
+        brandComboBox.addItem("Land Rover");
+        brandComboBox.addItem("Lexus");
+        brandComboBox.addItem("Mercedes-Benz");
+        brandComboBox.addItem("Porsche");
+        brandComboBox.addItem("Toyota");
+        brandComboBox.addItem("Volkswagen");
+
         gearBoxComboBox.addItem("Manual");
         gearBoxComboBox.addItem("Automatic");
 
@@ -33,6 +47,7 @@ public class Dashboard {
         fuelTypeComboBox.addItem("Petrol");
         fuelTypeComboBox.addItem("Diesel");
         fuelTypeComboBox.addItem("Hybrid");
+
         adminIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -50,6 +65,10 @@ public class Dashboard {
         searchForACarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(doYouHaveACheckBox.isSelected())
+                    Car.oneYearExperience=true;
+                else
+                    Car.oneYearExperience=false;
                 JFrame carsFrame = new JFrame("Cars");
                 ListofCars listofCars = new ListofCars(carsFrame);
                 JScrollPane sp = new JScrollPane(listofCars.panel1);

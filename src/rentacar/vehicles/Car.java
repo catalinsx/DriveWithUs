@@ -1,6 +1,6 @@
 package rentacar.vehicles;
 
-abstract class Car implements RentalCostCalculator{
+public abstract class Car implements RentalCostCalculator{
     private double pricePerDay;
     private String classCar;
     private String brand;
@@ -8,8 +8,8 @@ abstract class Car implements RentalCostCalculator{
     private boolean gearBox; //Manuala-0 , automata-1
     private String Traction;
     private String fuelType;
-    private boolean oneYearExperience; // true/false
-    public Car(String classCar,String brand,String model, boolean gearBox,String Traction,String fuelType,double pricePerDay,boolean oneYearExperience){
+    public static boolean oneYearExperience; // true/false
+    public Car(String classCar,String brand,String model, boolean gearBox,String Traction,String fuelType,double pricePerDay){
         this.classCar = classCar;
         this.brand = brand;
         this.model = model;
@@ -17,11 +17,18 @@ abstract class Car implements RentalCostCalculator{
         this.Traction = Traction;
         this.fuelType = fuelType;
         this.pricePerDay = pricePerDay;
-        this.oneYearExperience = oneYearExperience;
     }
+    /*
     public boolean getOneYearExperience(){
         return oneYearExperience;
     }
+
+    public void setOneYearExperience(boolean oneYearExperience){
+        this.oneYearExperience=oneYearExperience;
+    }
+    */
+
+
     public double getPricePerDay(){
         return pricePerDay;
     }
