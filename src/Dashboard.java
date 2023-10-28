@@ -76,7 +76,7 @@ public class Dashboard {
         dashboard.imageLabel.setIcon(imageIcon);
         dashboard.adminIcon.setIcon(adminIcon);
         frame.setVisible(true);
-        frame.setSize(1366, 768 );
+        frame.setSize(1366, 668 );
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
     }

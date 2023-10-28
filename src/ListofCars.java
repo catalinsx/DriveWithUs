@@ -38,12 +38,12 @@ public class ListofCars {
                @Override
                public void mouseClicked(MouseEvent e) {
                    JFrame billFrame = new JFrame("Bill");
-                   JPanel billPanel = new JPanel();
+                   Customer customer = new Customer();
+                   billFrame.setContentPane(customer.panel1);
                    billFrame.setResizable(false);
-                   billFrame.setSize(400, 300);
+                   billFrame.setSize(700, 600);
                    billFrame.setLocationRelativeTo(null);
                    billFrame.setVisible(true);
-                   billFrame.setContentPane(billPanel);
                    carsFrame.dispose();
                }
            });

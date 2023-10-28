@@ -4,18 +4,18 @@ public class Customer {
     private long cnp;
     private String lastName;
     private String firstName;
-    private String adress;
+    private String address;
     private long phoneNumber;
     private String eMail;
     
-    public Customer(String firstName, String lastName, long cnp, String adress, long phoneNumber, String eMail)
+    public Customer(String firstName, String lastName, long cnp, String address, long phoneNumber, String eMail)
     {
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.cnp=cnp;
-        this.adress=adress;
-        this.phoneNumber=phoneNumber;
-        this.eMail=eMail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cnp = cnp;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.eMail = eMail;
     }
     public long getCnp() {
         return this.cnp;
@@ -36,8 +36,8 @@ public class Customer {
     public String geteMail() {
         return this.eMail;
     }
-    public String getAdress()
+    public String getAddress()
     {
-        return this.adress;
+        return this.address;
     }
 }
