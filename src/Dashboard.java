@@ -66,10 +66,10 @@ public class Dashboard {
         searchForACarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(doYouHaveACheckBox.isSelected())
-                    Car.oneYearExperience=true;
-                else
-                    Car.oneYearExperience=false;
+//                if(doYouHaveACheckBox.isSelected())
+//                    Car.oneYearExperience=true;
+//                else
+//                    Car.oneYearExperience=false;
                 JFrame carsFrame = new JFrame("Cars");
                 ListofCars listofCars = new ListofCars(carsFrame);
                 JScrollPane sp = new JScrollPane(listofCars.panel1);
