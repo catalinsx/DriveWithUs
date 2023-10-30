@@ -1,23 +1,42 @@
 package rentacar.vehicles;
 
-abstract class Car implements RentalCostCalculator{
+import java.io.Serializable;
+
+public abstract class Car implements RentalCostCalculator, Serializable {
     private double pricePerDay;
     private String classCar;
     private String brand;
     private String model;
-    private boolean gearBox; //Manuala-0 , automata-1
-    private String Traction;
+    private String gearBox;
+    private String traction;
     private String fuelType;
     private boolean oneYearExperience; // true/false
-    public Car(String classCar,String brand,String model, boolean gearBox,String Traction,String fuelType,double pricePerDay,boolean oneYearExperience){
+    public Car(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay){
         this.classCar = classCar;
         this.brand = brand;
         this.model = model;
         this.gearBox = gearBox;
-        this.Traction = Traction;
+        this.traction = traction;
         this.fuelType = fuelType;
         this.pricePerDay = pricePerDay;
-        this.oneYearExperience = oneYearExperience;
+    }
+    public String getBrand(){
+        return brand;
+    }
+    public String getModel(){
+        return model;
+    }
+    public String getGearBox(){
+        return gearBox;
+    }
+    public String getTraction(){
+        return traction;
+    }
+    public String getFuelType(){
+        return fuelType;
+    }
+    public String getClassCar(){
+        return classCar;
     }
     public boolean getOneYearExperience(){
         return oneYearExperience;
