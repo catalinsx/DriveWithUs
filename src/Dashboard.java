@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+
 import rentacar.vehicles.*;
 public class Dashboard {
     private JPanel dashboardPanel;
@@ -19,7 +24,7 @@ public class Dashboard {
     private JComboBox<String> fuelTypeComboBox;
 
     public Dashboard(){
-        // test;
+
         classComboBox.addItem("Luxury");
         classComboBox.addItem("Sport");
         classComboBox.addItem("Premium");
@@ -76,7 +81,7 @@ public class Dashboard {
                 sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
                 sp.getVerticalScrollBar().setUnitIncrement(20);
                 carsFrame.add(sp);
-                carsFrame.setSize(650, 768);
+                carsFrame.setSize(650, 1080);
                 carsFrame.setResizable(false);
                 carsFrame.setLocationRelativeTo(null);
                 carsFrame.setVisible(true);

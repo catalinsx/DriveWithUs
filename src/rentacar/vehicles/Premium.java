@@ -4,14 +4,18 @@ import java.io.Serializable;
 
 public class Premium extends Car implements Serializable {
     private String features;
-    public Premium(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay) {
+    private String imageLink;
+    public Premium(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay,
+                   String imageLink,String features) {
         super(classCar, brand, model, gearBox, traction, fuelType, pricePerDay);
-     //   this.features = features; // am scos feature pt moment
+        this.imageLink = imageLink;
+        this.features = features;
     }
-//    public Premium(String classCar,String brand,String model, boolean gearBox,String Traction,String fuelType,double pricePerDay,boolean oneYearExperience) {
-//        super(classCar, brand, model, gearBox, Traction, fuelType, pricePerDay,oneYearExperience);
-//        this.features = "fara dotari";
-//    }
+    public Premium(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay, String imageLink) {
+        super(classCar, brand, model, gearBox, traction, fuelType, pricePerDay);
+        this.features = "fara dotari";
+        this.imageLink = imageLink;
+    }
     @Override
     public String getBrand() {
         return super.getBrand();
@@ -38,6 +42,9 @@ public class Premium extends Car implements Serializable {
     }
     public String getFeatures() {
         return features;
+    }
+    public String getImageLink() {
+        return imageLink;
     }
     @Override
     public double calculateRentalCost(int days){

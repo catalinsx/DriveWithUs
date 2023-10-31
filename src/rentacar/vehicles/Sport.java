@@ -5,15 +5,17 @@ import java.io.Serializable;
 public class Sport extends Car implements Serializable {
     private String features;
     private String imageLink;
-    public Sport(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay, String imageLink) {
+    public Sport(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay,
+                 String imageLink, String features) {
         super(classCar, brand, model, gearBox, traction, fuelType, pricePerDay);
-     //   this.features = features; am scos momentan features
+        this.features = features;
         this.imageLink = imageLink;
     }
-//    public Sport(String classCar,String brand, String model, boolean gearBox,String Traction,String fuelType,double pricePerDay,boolean oneYearExperience) {
-//        super(classCar, brand, model, gearBox, Traction, fuelType, pricePerDay,oneYearExperience);
-//        this.features = "fara dotari";
-//    }
+    public Sport(String classCar,String brand, String model, String gearBox,String traction,String fuelType,double pricePerDay, String imageLink) {
+        super(classCar, brand, model, gearBox, traction, fuelType, pricePerDay);
+        this.features = "fara dotari";
+        this.imageLink = imageLink;
+    }
 
     @Override
     public String getBrand() {

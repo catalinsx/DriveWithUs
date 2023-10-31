@@ -41,6 +41,9 @@ public abstract class Car implements RentalCostCalculator, Serializable {
     public boolean getOneYearExperience(){
         return oneYearExperience;
     }
+    public void setPrice(int newPrice){
+        this.pricePerDay = newPrice;
+    }
     public double getPricePerDay(){
         return pricePerDay;
     }

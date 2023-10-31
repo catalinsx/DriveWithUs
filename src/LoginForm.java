@@ -18,6 +18,11 @@ public class LoginForm {
                 if(username.equals(textField1.getText()) && password.equals(passwordField1.getText())){
                     JFrame adminFrame = new JFrame("Admin");
                     Admin admin = new Admin();
+                    adminFrame.setContentPane(admin.panel1);
+                    adminFrame.setVisible(true);
+                    adminFrame.setSize(700, 250);
+                    adminFrame.setLocationRelativeTo(null);
+                    adminFrame.setResizable(false);
                     Logger logger = FileLogger.getInstance();
                     logger.logEvent("Logging was successfully.");
                 }
