@@ -16,13 +16,6 @@ public class ListofCars {
 
     public ListofCars(JFrame carsFrame) {
         cars = new ArrayList<>();
-        try(FileInputStream fileInputStream = new FileInputStream("cars.ser");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
-            cars = (ArrayList<Car>) objectInputStream.readObject(); // tre sa vad ce naiba e eroarea asta
-            System.out.println("Am citit masinile din fisier");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace(); // modific sa mi afiseze cu logger
-        }
 //        try(FileOutputStream fileOutputStream = new FileOutputStream("cars.ser");
 //            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 //            objectOutputStream.writeObject(cars);
@@ -30,10 +23,17 @@ public class ListofCars {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+        try(FileInputStream fileInputStream = new FileInputStream("cars.ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
+            cars = (ArrayList<Car>) objectInputStream.readObject(); // tre sa vad ce naiba e eroarea asta
+            System.out.println("Am citit masinile din fisier");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace(); // modific sa mi afiseze cu logger
+        }
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
         Font font = new Font("Arial", Font.ITALIC, 20);
        for(Car car : cars){
-           if(car instanceof Sport sport){
+           if(car instanceof Sport sport) {
                // Blocul de cod se execută doar dacă obiectul 'car' este o instanță a clasei 'Sport'
                // sau a unei subclase a clasei 'Sport'
                // Acest lucru vă permite să verificați tipul obiectului înainte de a-l utiliza
