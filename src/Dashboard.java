@@ -71,10 +71,19 @@ public class Dashboard {
         searchForACarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if(doYouHaveACheckBox.isSelected())
-//                    Car.oneYearExperience=true;
-//                else
-//                    Car.oneYearExperience=false;
+                if(doYouHaveACheckBox.isSelected()){
+                    Car.setOneYearExperience(true);
+                }
+                else {
+                    Car.setOneYearExperience(false);
+                }
+                String clasaCautata=classComboBox.getSelectedItem().toString();
+                String brandCautat=brandComboBox.getSelectedItem().toString();
+                String gearBoxCautat=gearBoxComboBox.getSelectedItem().toString();
+                String tractionCautat=tractionComboBox.getSelectedItem().toString();
+                String fuelTypeCautat=fuelTypeComboBox.getSelectedItem().toString();
+                //deci eu astea unde urmeaza sa le pun? mai jos? sau in listofCars? in sensul in care eu trebuie sa prelucrez ce sa mi afiseze din tot vectorul ala...
+                System.out.println(clasaCautata);
                 JFrame carsFrame = new JFrame("Cars");
                 ListofCars listofCars = new ListofCars(carsFrame);
                 JScrollPane sp = new JScrollPane(listofCars.panel1);

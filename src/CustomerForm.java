@@ -27,21 +27,50 @@ public class CustomerForm {
         completeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageIcon imageIcon1 = new ImageIcon("src/Images/thanku.png");
-                imageThanku.setIcon(imageIcon1);
-                String firstName = firstNameTextField.getText();
-                String lastName = lastNameTextField.getText();
-                String address = addressTextField.getText();
-                String phone = phoneTextField.getText();
-                String email = emailTextField.getText();
-                String cnp = cnpTextField.getText();
-                Customer customer = new Customer(firstName, lastName, cnp, address, phone, email);
-                customers.add(customer);
+                if (firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || addressTextField.getText().isEmpty() ||
+                        phoneTextField.getText().isEmpty() || emailTextField.getText().isEmpty() || cnpTextField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "!!!ERROR-COMPLETE ALL TEXTFIELDS!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    if(firstNameTextField.getText().matches("^[a-zA-Z\\-]+$")) {
+                        if (lastNameTextField.getText().matches("^[a-zA-Z]+$")) {
+                            if (phoneTextField.getText().matches("\\d+")) {
+                                if (emailTextField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+                                    if (cnpTextField.getText().matches("\\d{13}")) {
+                                        //Actiune final
+                                        String firstName = firstNameTextField.getText();
+                                        String lastName = lastNameTextField.getText();
+                                        String address = addressTextField.getText();
+                                        String phone = phoneTextField.getText();
+                                        String email = emailTextField.getText();
+                                        String cnp = cnpTextField.getText();
+                                        Customer customer = new Customer(firstName, lastName, cnp, address, phone, email);
+                                        customers.add(customer);
 
-                // Salvare clienți actualizați în fișier
-                saveCustomers(customers);
+                                        // Salvare clienți actualizați în fișier
+                                        saveCustomers(customers);
 
-                System.out.println("Customer data was successfully saved.");
+                                        System.out.println("Customer data was successfully saved.");
+
+                                        ImageIcon imageIcon1 = new ImageIcon("src/Images/thanku.png");
+                                        imageThanku.setIcon(imageIcon1);
+
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "!!!ERROR-INVALID CNP!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "!!!ERROR-INVALID E-MAIL!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "!!!ERROR-PHONE NUMBER TEXT FIELD MUST CONTAIN NUMBERS ONLY!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "!!!ERR0R-INVALID LAST NAME!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "!!!ERROR-INVALID FIRST NAME!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         });
     }

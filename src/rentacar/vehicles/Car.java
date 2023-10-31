@@ -10,7 +10,7 @@ public abstract class Car implements RentalCostCalculator, Serializable {
     private String gearBox;
     private String traction;
     private String fuelType;
-    private boolean oneYearExperience; // true/false
+    private static boolean oneYearExperience; // true/false
     public Car(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay){
         this.classCar = classCar;
         this.brand = brand;
@@ -37,6 +37,9 @@ public abstract class Car implements RentalCostCalculator, Serializable {
     }
     public String getClassCar(){
         return classCar;
+    }
+    public static void setOneYearExperience(boolean experience){
+        oneYearExperience=experience;
     }
     public boolean getOneYearExperience(){
         return oneYearExperience;
