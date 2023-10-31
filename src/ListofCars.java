@@ -154,7 +154,7 @@ public class ListofCars {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame billFrame = new JFrame("Bill");
-                CustomerForm customerForm = new CustomerForm();
+                CustomerForm customerForm = new CustomerForm(billFrame);
                 billFrame.setContentPane(customerForm.panel1);
                 billFrame.setResizable(false);
                 billFrame.setSize(700, 600);
@@ -173,7 +173,7 @@ public class ListofCars {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame billFrame = new JFrame("Bill");
-                CustomerForm customerForm = new CustomerForm();
+                CustomerForm customerForm = new CustomerForm(billFrame);
                 billFrame.setContentPane(customerForm.panel1);
                 billFrame.setResizable(false);
                 billFrame.setSize(700, 600);
@@ -192,7 +192,7 @@ public class ListofCars {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame billFrame = new JFrame("Bill");
-                CustomerForm customerForm = new CustomerForm();
+                CustomerForm customerForm = new CustomerForm(billFrame);
                 billFrame.setContentPane(customerForm.panel1);
                 billFrame.setResizable(false);
                 billFrame.setSize(700, 600);

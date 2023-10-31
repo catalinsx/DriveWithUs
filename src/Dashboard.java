@@ -58,7 +58,7 @@ public class Dashboard {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame loginFrame = new JFrame("Login");
-                LoginForm loginForm = new LoginForm();
+                LoginForm loginForm = new LoginForm(loginFrame);
                 loginFrame.setContentPane(loginForm.panel1);
                 ImageIcon imageIcon = new ImageIcon("src/Images/adminIcon.jpg");
                 loginForm.imageLock.setIcon(imageIcon);
@@ -66,6 +66,7 @@ public class Dashboard {
                 loginFrame.setSize(400,300);
                 loginFrame.setResizable(false);
                 loginFrame.setLocationRelativeTo(null);
+
             }
         });
         searchForACarButton.addActionListener(new ActionListener() {

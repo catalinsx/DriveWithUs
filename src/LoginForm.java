@@ -11,7 +11,7 @@ public class LoginForm {
     private final String username = "admin";
     private final String password = "admin";
 
-    LoginForm(){
+    LoginForm(JFrame loginFrame){
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -25,6 +25,7 @@ public class LoginForm {
                     adminFrame.setResizable(false);
                     Logger logger = FileLogger.getInstance();
                     logger.logEvent("Logging was successfully.");
+                    loginFrame.dispose();
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Datele introduse sunt gresite");

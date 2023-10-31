@@ -18,8 +18,9 @@ public class CustomerForm {
     private JTextField phoneTextField;
     private JTextField emailTextField;
     private JTextField cnpTextField;
+    private JTextField daysTextField;
     private ArrayList<Customer> customers;
-    public CustomerForm() {
+    public CustomerForm(JFrame billFrame) {
         ImageIcon imageIcon = new ImageIcon("src/Images/rentalform.png");
         imageLabel.setIcon(imageIcon);
         customers = loadCustomers(); // Încărcați lista de clienți la pornirea formularului
@@ -37,7 +38,6 @@ public class CustomerForm {
                             if (phoneTextField.getText().matches("\\d+")) {
                                 if (emailTextField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
                                     if (cnpTextField.getText().matches("\\d{13}")) {
-                                        //Actiune final
                                         String firstName = firstNameTextField.getText();
                                         String lastName = lastNameTextField.getText();
                                         String address = addressTextField.getText();
@@ -47,7 +47,6 @@ public class CustomerForm {
                                         Customer customer = new Customer(firstName, lastName, cnp, address, phone, email);
                                         customers.add(customer);
 
-                                        // Salvare clienți actualizați în fișier
                                         saveCustomers(customers);
 
                                         System.out.println("Customer data was successfully saved.");
@@ -80,7 +79,6 @@ public class CustomerForm {
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             return (ArrayList<Customer>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException ex) {
-            // În cazul în care nu există niciun fișier serializat, returnați o listă goală
             return new ArrayList<>();
         }
     }

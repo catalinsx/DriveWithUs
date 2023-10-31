@@ -7,9 +7,7 @@ import rentacar.vehicles.Sport;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Admin {
@@ -75,11 +73,18 @@ public class Admin {
                                 JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
                             }
                         }
-                    } // nuj dc nu merge, presupun ca e ceva de actualizarea serializarilor...asta e doar de citire...nu cred ca merge setteru fara
-                    // sa se faca serializarea din nou
+                    }
+                    try(FileOutputStream fileOutputStream = new FileOutputStream("cars.ser");
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+                        objectOutputStream.writeObject(cars);
+                        System.out.println("Am salvat masiniile in fisier");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                 } catch (IOException | ClassNotFoundException ex) {
                     ex.printStackTrace();
                 }
+
             }
         });
     }
