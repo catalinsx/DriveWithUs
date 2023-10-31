@@ -1,10 +1,12 @@
 import rentacar.customers.Customer;
-
+import rentacar.vehicles.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+
+import static java.lang.Object.*;
 
 
 public class CustomerForm {
@@ -19,8 +21,9 @@ public class CustomerForm {
     private JTextField emailTextField;
     private JTextField cnpTextField;
     private JTextField daysTextField;
+    private JTextField pretTotalTextField;
     private ArrayList<Customer> customers;
-    public CustomerForm(JFrame billFrame) {
+    public CustomerForm(JFrame billFrame,Object object) {
         ImageIcon imageIcon = new ImageIcon("src/Images/rentalform.png");
         imageLabel.setIcon(imageIcon);
         customers = loadCustomers(); // Încărcați lista de clienți la pornirea formularului
@@ -35,25 +38,42 @@ public class CustomerForm {
                 else {
                     if(firstNameTextField.getText().matches("^[a-zA-Z\\-]+$")) {
                         if (lastNameTextField.getText().matches("^[a-zA-Z]+$")) {
-                            if (phoneTextField.getText().matches("\\d+")) {
+                            if (phoneTextField.getText().matches("\\d{10}")) {
                                 if (emailTextField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
                                     if (cnpTextField.getText().matches("\\d{13}")) {
-                                        String firstName = firstNameTextField.getText();
-                                        String lastName = lastNameTextField.getText();
-                                        String address = addressTextField.getText();
-                                        String phone = phoneTextField.getText();
-                                        String email = emailTextField.getText();
-                                        String cnp = cnpTextField.getText();
-                                        Customer customer = new Customer(firstName, lastName, cnp, address, phone, email);
-                                        customers.add(customer);
+                                        if(daysTextField.getText().matches("\\d+")) {
+                                            String firstName = firstNameTextField.getText();
+                                            String lastName = lastNameTextField.getText();
+                                            String address = addressTextField.getText();
+                                            String phone = phoneTextField.getText();
+                                            String email = emailTextField.getText();
+                                            String cnp = cnpTextField.getText();
+                                            int days=Integer.parseInt(daysTextField.getText());
+                                            double totalPrice=0;
+                                            if(object instanceof Luxury luxuryObject) {
+                                                totalPrice = luxuryObject.calculateRentalCost(days);
+                                            }
+                                            else if(object instanceof Sport sportObject){
+                                                totalPrice = sportObject.calculateRentalCost(days);
+                                            }
+                                            else if(object instanceof Premium premiumObject){
+                                                totalPrice = premiumObject.calculateRentalCost(days);
+                                            }
+                                            String totalPriceString=String.valueOf(totalPrice);
+                                            pretTotalTextField.setText(totalPriceString);
+                                            Customer customer = new Customer(firstName, lastName, cnp, address, phone, email);
+                                            customers.add(customer);
 
-                                        saveCustomers(customers);
+                                            saveCustomers(customers);
 
-                                        System.out.println("Customer data was successfully saved.");
+                                            System.out.println("Customer data was successfully saved.");
 
-                                        ImageIcon imageIcon1 = new ImageIcon("src/Images/thanku.png");
-                                        imageThanku.setIcon(imageIcon1);
-
+                                            ImageIcon imageIcon1 = new ImageIcon("src/Images/thanku.png");
+                                            imageThanku.setIcon(imageIcon1);
+                                        }
+                                        else{
+                                            JOptionPane.showMessageDialog(null, "!!!ERROR-INVALID NUMBER!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                                        }
                                     } else {
                                         JOptionPane.showMessageDialog(null, "!!!ERROR-INVALID CNP!!!", "Error", JOptionPane.ERROR_MESSAGE);
                                     }

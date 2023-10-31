@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import rentacar.vehicles.*;
 public class Dashboard {
@@ -43,13 +44,16 @@ public class Dashboard {
         brandComboBox.addItem("Toyota");
         brandComboBox.addItem("Volkswagen");
 
+        gearBoxComboBox.addItem("Any");
         gearBoxComboBox.addItem("Manual");
         gearBoxComboBox.addItem("Automatic");
 
-        tractionComboBox.addItem("Front-Wheel Drive - FWD");
-        tractionComboBox.addItem("Rear-Wheel Drive - RWD");
-        tractionComboBox.addItem("All-Wheel Drive - AWD");
+        tractionComboBox.addItem("Any");
+        tractionComboBox.addItem("FWD");
+        tractionComboBox.addItem("RWD");
+        tractionComboBox.addItem("AWD");
 
+        fuelTypeComboBox.addItem("Any");
         fuelTypeComboBox.addItem("Petrol");
         fuelTypeComboBox.addItem("Diesel");
         fuelTypeComboBox.addItem("Hybrid");
@@ -78,15 +82,16 @@ public class Dashboard {
                 else {
                     Car.setOneYearExperience(false);
                 }
-                String clasaCautata=classComboBox.getSelectedItem().toString();
-                String brandCautat=brandComboBox.getSelectedItem().toString();
-                String gearBoxCautat=gearBoxComboBox.getSelectedItem().toString();
-                String tractionCautat=tractionComboBox.getSelectedItem().toString();
-                String fuelTypeCautat=fuelTypeComboBox.getSelectedItem().toString();
-                //deci eu astea unde urmeaza sa le pun? mai jos? sau in listofCars? in sensul in care eu trebuie sa prelucrez ce sa mi afiseze din tot vectorul ala...
-                System.out.println(clasaCautata);
+                String clasaCautata= Objects.requireNonNull(classComboBox.getSelectedItem()).toString();
+                String brandCautat= Objects.requireNonNull(brandComboBox.getSelectedItem()).toString();
+                String gearBoxCautat= Objects.requireNonNull(gearBoxComboBox.getSelectedItem()).toString();
+                String tractionCautat= Objects.requireNonNull(tractionComboBox.getSelectedItem()).toString();
+                String fuelTypeCautat= Objects.requireNonNull(fuelTypeComboBox.getSelectedItem()).toString();
+                if(Objects.equals(fuelTypeCautat, "Petrol"))
+                    fuelTypeCautat="Benzina";
+                //.out.println(clasaCautata);
                 JFrame carsFrame = new JFrame("Cars");
-                ListofCars listofCars = new ListofCars(carsFrame);
+                ListofCars listofCars = new ListofCars(carsFrame,clasaCautata,brandCautat,gearBoxCautat,tractionCautat,fuelTypeCautat);
                 JScrollPane sp = new JScrollPane(listofCars.panel1);
                 sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
                 sp.getVerticalScrollBar().setUnitIncrement(20);

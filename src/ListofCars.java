@@ -9,12 +9,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListofCars {
     public JPanel panel1;
     public  ArrayList<Car> cars;
 
-    public ListofCars(JFrame carsFrame) {
+    public ListofCars(JFrame carsFrame,String clasaCautata,String brandCautat,String gearBoxCautat,String tractionCautat,String fuelTypeCautat) {
         cars = new ArrayList<>();
 //        try(FileOutputStream fileOutputStream = new FileOutputStream("cars.ser");
 //            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
@@ -32,8 +33,16 @@ public class ListofCars {
         }
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
         Font font = new Font("Arial", Font.ITALIC, 20);
+        boolean ok=false;
        for(Car car : cars){
-           if(car instanceof Sport sport) {
+           if(((car.getClassCar().equals(clasaCautata)))
+                   &&((car.getBrand().equals(brandCautat))||(Objects.equals(brandCautat, "Any")))
+                   &&((car.getGearBox().equals(gearBoxCautat)) ||(Objects.equals(gearBoxCautat, "Any")))
+                   &&((car.getTraction().equals(tractionCautat))||(Objects.equals(tractionCautat, "Any")))
+                   &&((car.getFuelType().equals(fuelTypeCautat))||(Objects.equals(fuelTypeCautat, "Any"))))
+           {
+               ok=true;
+           if(car instanceof Sport sport){
                // Blocul de cod se execută doar dacă obiectul 'car' este o instanță a clasei 'Sport'
                // sau a unei subclase a clasei 'Sport'
                // Acest lucru vă permite să verificați tipul obiectului înainte de a-l utiliza
@@ -70,7 +79,7 @@ public class ListofCars {
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
                panel1.add(new JSeparator(SwingConstants.HORIZONTAL));
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
-           }
+               }
            else if(car instanceof Luxury luxury)
            {
                JLabel numeLabel = new JLabel("Brand: "+ luxury.getBrand());
@@ -109,6 +118,7 @@ public class ListofCars {
            }
            else if(car instanceof Premium premium)
            {
+               {
                JLabel numeLabel = new JLabel("Brand: "+ premium.getBrand());
                numeLabel.setForeground(Color.black);
                numeLabel.setFont(font);
@@ -142,10 +152,19 @@ public class ListofCars {
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
                panel1.add(new JSeparator(SwingConstants.HORIZONTAL));
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
-           }
+           }}
+       }}
+       if(!ok)
+       {
+           JOptionPane.showMessageDialog(null, "!!!NU AVEM PE STOC MASINI CU ACESTE SPECIFICATII!!!", "Error", JOptionPane.ERROR_MESSAGE);
+           carsFrame.setVisible(false);
+//           System.out.println("Nu exista masini.");
+//           JLabel numeLabel = new JLabel("NU AVEM PE STOC MASINI CU ACESTE SPECIFICATII.");
+//           numeLabel.setForeground(Color.black);
+//           numeLabel.setFont(font);
+//           panel1.add(numeLabel);
        }
     }
-
     private static JLabel getImageLabel(JFrame carsFrame, Sport sport) {
         JLabel imageLabel = new JLabel();
         ImageIcon imageIcon = new ImageIcon(sport.getImageLink());
@@ -154,7 +173,7 @@ public class ListofCars {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame billFrame = new JFrame("Bill");
-                CustomerForm customerForm = new CustomerForm(billFrame);
+                CustomerForm customerForm = new CustomerForm(billFrame,sport);
                 billFrame.setContentPane(customerForm.panel1);
                 billFrame.setResizable(false);
                 billFrame.setSize(700, 600);
@@ -173,7 +192,7 @@ public class ListofCars {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame billFrame = new JFrame("Bill");
-                CustomerForm customerForm = new CustomerForm(billFrame);
+                CustomerForm customerForm = new CustomerForm(billFrame,premium);
                 billFrame.setContentPane(customerForm.panel1);
                 billFrame.setResizable(false);
                 billFrame.setSize(700, 600);
@@ -192,7 +211,7 @@ public class ListofCars {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JFrame billFrame = new JFrame("Bill");
-                CustomerForm customerForm = new CustomerForm(billFrame);
+                CustomerForm customerForm = new CustomerForm(billFrame,luxury);
                 billFrame.setContentPane(customerForm.panel1);
                 billFrame.setResizable(false);
                 billFrame.setSize(700, 600);

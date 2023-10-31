@@ -17,10 +17,12 @@ public class Luxury extends Car implements Serializable {
     }
     @Override
     public String getBrand() {
+
         return super.getBrand();
     }
     @Override
     public String getModel(){
+
         return super.getModel();
     }
     @Override
