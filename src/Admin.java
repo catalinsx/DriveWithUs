@@ -18,6 +18,7 @@ public class Admin {
     private JTextField modelAdmin;
     private JTextField pretNou;
     private JButton actualizeazaPretButton;
+    private JButton afiseazaDiagramaUMLButton;
 
     public Admin(){
 
@@ -85,6 +86,21 @@ public class Admin {
                     ex.printStackTrace();
                 }
 
+            }
+        });
+        afiseazaDiagramaUMLButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frameUML = new JFrame("Diagrama UML a programului");
+                JPanel panel1 = new JPanel();
+                frameUML.setLocationRelativeTo(null);
+                JLabel labelUML=new JLabel();
+                ImageIcon imagineUML=new ImageIcon("src/Images/DiagramaUML.png");
+                labelUML.setIcon(imagineUML);
+                frameUML.setContentPane(panel1);
+                frameUML.setSize(1920, 1080);
+                frameUML.setResizable(false);
+                frameUML.setVisible(true);
             }
         });
     }

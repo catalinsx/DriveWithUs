@@ -19,33 +19,10 @@ public class Customer implements Serializable {
         this.phoneNumber = phoneNumber;
         this.eMail = eMail;
     }
-    public String getCnp() {
-        return this.cnp;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    public String geteMail() {
-        return this.eMail;
-    }
-    public String getAddress()
-    {
-        return this.address;
-    }
     @Override
     public String toString() {
-        return "Nume: " + firstName + " " + lastName + " CNP: " + cnp + " Adresa: " + address + " Numar de telefon: " +
-                phoneNumber + " E-mail: " + eMail;
+        return "Name: " + firstName + " " + lastName + ", CNP: " + cnp + ", Adresa: " + address + ", Numar de telefon: " +
+                phoneNumber + ", E-mail: " + eMail;
     }
 
 }
