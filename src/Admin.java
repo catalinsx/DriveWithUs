@@ -49,32 +49,46 @@ public class Admin {
         actualizeazaPretButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String marca = marcaAdmin.getText();
-                String model = modelAdmin.getText();
-                String pret = pretNou.getText();
-                try(FileInputStream fileInputStream = new FileInputStream("cars.ser");
-                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
-                    ArrayList<Car> cars = (ArrayList<Car>) objectInputStream.readObject();
-                    for(Car car : cars){
-                        if(car instanceof Sport sport){
-                            if(sport.getBrand().equals(marca) && sport.getModel().equals(model)){
-                                sport.setPricePerDay(Double.parseDouble(pret));
-                                JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
+                if(marcaAdmin.getText().isEmpty() || modelAdmin.getText().isEmpty() || pretNou.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "!!!ERROR-COMPLETE ALL TEXTFIELDS!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    String marca = marcaAdmin.getText();
+                    String model = modelAdmin.getText();
+                    String pret = pretNou.getText();
+                    if(pretNou.getText().matches("\\d+(\\.\\d+)?"))
+                    {
+                        try(FileInputStream fileInputStream = new FileInputStream("cars.ser");
+                        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
+                        ArrayList<Car> cars = (ArrayList<Car>) objectInputStream.readObject();
+                        boolean okMasina=false;
+                        for(Car car : cars){
+                            if(car instanceof Sport sport){
+                                if(sport.getBrand().equals(marca) && sport.getModel().equals(model)){
+                                    okMasina=true;
+                                    sport.setPricePerDay(Double.parseDouble(pret));
+                                    JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
+                                }
                             }
-                        }
-                        else if(car instanceof Luxury luxury){
-                            if(luxury.getBrand().equals(marca) && luxury.getModel().equals(model)){
-                                luxury.setPricePerDay(Double.parseDouble(pret));
-                                JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
+                            else if(car instanceof Luxury luxury){
+                                if(luxury.getBrand().equals(marca) && luxury.getModel().equals(model)){
+                                    okMasina=true;
+                                    luxury.setPricePerDay(Double.parseDouble(pret));
+                                    JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
+                                }
                             }
-                        }
-                        else if(car instanceof Premium premium){
-                            if(premium.getBrand().equals(marca) && premium.getModel().equals(model)){
-                                premium.setPricePerDay(Double.parseDouble(pret));
-                                JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
-                            }
+                            else if(car instanceof Premium premium){
+                                if(premium.getBrand().equals(marca) && premium.getModel().equals(model)){
+                                    okMasina=true;
+                                    premium.setPricePerDay(Double.parseDouble(pret));
+                                    JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
+                                }
                         }
                     }
+                        if(!okMasina)
+                        {
+                            JOptionPane.showMessageDialog(null, "!!!ERROR: THE CAR DOESN'T EXIST!!!");
+                        }
                     try(FileOutputStream fileOutputStream = new FileOutputStream("cars.ser");
                         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
                         objectOutputStream.writeObject(cars);
@@ -85,7 +99,11 @@ public class Admin {
                 } catch (IOException | ClassNotFoundException ex) {
                     ex.printStackTrace();
                 }
-
+                }
+                    else{
+                        JOptionPane.showMessageDialog(null, "!!!ERROR: THE PRICE MUST CONTAIN NUMBERS ONLY!!!");
+                    }
+            }
             }
         });
         afiseazaDiagramaUMLButton.addActionListener(new ActionListener() {
