@@ -5,9 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
-
+import rentacar.logging.*;
 import static java.lang.Object.*;
-
 
 public class CustomerForm {
     public JPanel panel1;
@@ -70,6 +69,8 @@ public class CustomerForm {
 
                                             ImageIcon imageIcon1 = new ImageIcon("src/Images/thanku.png");
                                             imageThanku.setIcon(imageIcon1);
+                                            Logger logger = FileLogger.getInstance();
+                                            logger.logEvent("The order has been placed.");
                                         }
                                         else{
                                             JOptionPane.showMessageDialog(null, "!!!ERROR-INVALID NUMBER!!!", "Error", JOptionPane.ERROR_MESSAGE);

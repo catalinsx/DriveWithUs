@@ -3,6 +3,7 @@ import rentacar.vehicles.Car;
 import rentacar.vehicles.Luxury;
 import rentacar.vehicles.Premium;
 import rentacar.vehicles.Sport;
+import rentacar.logging.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,8 @@ public class Admin {
         afiseazaListaDeClientiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The list of clients has been displayed.");
                 JFrame clientFrame = new JFrame("Lista de clienti");
                 JPanel panel1 = new JPanel();
                 panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
@@ -67,6 +70,8 @@ public class Admin {
                                 if(sport.getBrand().equals(marca) && sport.getModel().equals(model)){
                                     okMasina=true;
                                     sport.setPricePerDay(Double.parseDouble(pret));
+                                    Logger logger = FileLogger.getInstance();
+                                    logger.logEvent("The price has been updated.");
                                     JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
                                 }
                             }
@@ -74,6 +79,8 @@ public class Admin {
                                 if(luxury.getBrand().equals(marca) && luxury.getModel().equals(model)){
                                     okMasina=true;
                                     luxury.setPricePerDay(Double.parseDouble(pret));
+                                    Logger logger = FileLogger.getInstance();
+                                    logger.logEvent("The price has been updated.");
                                     JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
                                 }
                             }
@@ -81,6 +88,8 @@ public class Admin {
                                 if(premium.getBrand().equals(marca) && premium.getModel().equals(model)){
                                     okMasina=true;
                                     premium.setPricePerDay(Double.parseDouble(pret));
+                                    Logger logger = FileLogger.getInstance();
+                                    logger.logEvent("The price has been updated.");
                                     JOptionPane.showMessageDialog(null, "Pretul a fost actualizat cu succes");
                                 }
                         }
@@ -109,6 +118,8 @@ public class Admin {
         afiseazaDiagramaUMLButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The UML diagram has been displayed.");
                 JFrame frameUML = new JFrame("Diagrama UML a programului");
                 JPanel panel1 = new JPanel();
                 JLabel labelUML=new JLabel();

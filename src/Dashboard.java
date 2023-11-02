@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Objects;
+import rentacar.logging.*;
 
 import rentacar.vehicles.*;
 public class Dashboard {
@@ -61,6 +62,8 @@ public class Dashboard {
         adminIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The loginFrame was opened.");
                 JFrame loginFrame = new JFrame("Login");
                 LoginForm loginForm = new LoginForm(loginFrame);
                 loginFrame.setContentPane(loginForm.panel1);
@@ -82,6 +85,8 @@ public class Dashboard {
                 else {
                     Car.setOneYearExperience(false);
                 }
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The cars are displayed depending on what was selected in the comboBoxes.");
                 String clasaCautata= Objects.requireNonNull(classComboBox.getSelectedItem()).toString();
                 String brandCautat= Objects.requireNonNull(brandComboBox.getSelectedItem()).toString();
                 String gearBoxCautat= Objects.requireNonNull(gearBoxComboBox.getSelectedItem()).toString();
@@ -111,6 +116,8 @@ public class Dashboard {
     }
 
     public static void main(String[] args) {
+        Logger logger = FileLogger.getInstance();
+        logger.logEvent("The app has opened.");
         JFrame frame = new JFrame("Dashboard");
         Dashboard dashboard = new Dashboard();
         frame.setContentPane(dashboard.dashboardPanel);

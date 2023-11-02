@@ -2,7 +2,7 @@ import rentacar.vehicles.Car;
 import rentacar.vehicles.Luxury;
 import rentacar.vehicles.Premium;
 import rentacar.vehicles.Sport;
-
+import rentacar.logging.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -160,6 +160,8 @@ public class ListofCars {
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The car has been selected.");
                 JFrame billFrame = new JFrame("Bill");
                 CustomerForm customerForm = new CustomerForm(billFrame,sport);
                 billFrame.setContentPane(customerForm.panel1);
@@ -179,6 +181,8 @@ public class ListofCars {
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The car has been selected.");
                 JFrame billFrame = new JFrame("Bill");
                 CustomerForm customerForm = new CustomerForm(billFrame,premium);
                 billFrame.setContentPane(customerForm.panel1);
@@ -198,6 +202,8 @@ public class ListofCars {
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Logger logger = FileLogger.getInstance();
+                logger.logEvent("The car has been selected.");
                 JFrame billFrame = new JFrame("Bill");
                 CustomerForm customerForm = new CustomerForm(billFrame,luxury);
                 billFrame.setContentPane(customerForm.panel1);
