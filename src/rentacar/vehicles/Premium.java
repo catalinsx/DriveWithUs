@@ -7,7 +7,7 @@ public class Premium extends Car implements Serializable {
     private String imageLink;
     public Premium(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay,String imageLink,String features) {
         super(classCar, brand, model, gearBox, traction, fuelType, pricePerDay);
-        this.features = features; // am scos feature pt moment
+        this.features = features;
         this.imageLink=imageLink;
     }
     public Premium(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay,String imageLink) {

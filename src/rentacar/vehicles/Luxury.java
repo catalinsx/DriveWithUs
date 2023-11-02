@@ -7,7 +7,7 @@ public class Luxury extends Car implements Serializable {
     private String imageLink;
     public Luxury(String classCar,String brand,String model, String gearBox,String traction,String fuelType,double pricePerDay, String imageLink, String features) {
         super(classCar, brand, model, gearBox, traction, fuelType, pricePerDay);
-        this.features = features;//am scos features pt moment
+        this.features = features;
         this.imageLink=imageLink;
     }
     public Luxury(String classCar,String brand,String model, String gearBox,String Traction,String fuelType,double pricePerDay,String imageLink) {

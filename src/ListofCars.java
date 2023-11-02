@@ -64,7 +64,7 @@ public class ListofCars {
                JLabel features = new JLabel("Features: " + sport.getFeatures());
                features.setForeground(Color.black);
                features.setFont(font);
-               JLabel pricePerDay = new JLabel("Price/day: " + sport.getPricePerDay());
+               JLabel pricePerDay = new JLabel("Price/day: " + sport.calculateRentalCost(1));
                pricePerDay.setForeground(Color.RED);
                pricePerDay.setFont(font);
                panel1.add(numeLabel);
@@ -100,7 +100,7 @@ public class ListofCars {
                JLabel features = new JLabel("Features: " + luxury.getFeatures());
                features.setForeground(Color.black);
                features.setFont(font);
-               JLabel pricePerDay = new JLabel("Price/day: " + luxury.getPricePerDay());
+               JLabel pricePerDay = new JLabel("Price/day: " + luxury.calculateRentalCost(1));
                pricePerDay.setForeground(Color.RED);
                pricePerDay.setFont(font);
                panel1.add(numeLabel);
@@ -137,7 +137,7 @@ public class ListofCars {
                JLabel features = new JLabel("Features: " + premium.getFeatures());
                features.setForeground(Color.black);
                features.setFont(font);
-               JLabel pricePerDay = new JLabel("Price/day: " + premium.getPricePerDay());
+               JLabel pricePerDay = new JLabel("Price/day: " + premium.calculateRentalCost(1));
                pricePerDay.setForeground(Color.RED);
                pricePerDay.setFont(font);
                panel1.add(numeLabel);

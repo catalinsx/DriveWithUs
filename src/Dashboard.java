@@ -89,7 +89,6 @@ public class Dashboard {
                 String fuelTypeCautat= Objects.requireNonNull(fuelTypeComboBox.getSelectedItem()).toString();
                 if(Objects.equals(fuelTypeCautat, "Petrol"))
                     fuelTypeCautat="Benzina";
-                //.out.println(clasaCautata);
                 JFrame carsFrame = new JFrame("Cars");
                 ListofCars listofCars = new ListofCars(carsFrame,clasaCautata,brandCautat,gearBoxCautat,tractionCautat,fuelTypeCautat);
                 JScrollPane sp = new JScrollPane(listofCars.panel1);

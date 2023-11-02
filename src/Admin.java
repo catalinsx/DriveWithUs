@@ -93,12 +93,15 @@ public class Admin {
             public void actionPerformed(ActionEvent e) {
                 JFrame frameUML = new JFrame("Diagrama UML a programului");
                 JPanel panel1 = new JPanel();
-                frameUML.setLocationRelativeTo(null);
                 JLabel labelUML=new JLabel();
                 ImageIcon imagineUML=new ImageIcon("src/Images/DiagramaUML.png");
                 labelUML.setIcon(imagineUML);
-                frameUML.setContentPane(panel1);
+
+                JScrollPane scrollBar=new JScrollPane(panel1,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                frameUML.add(scrollBar);
+                panel1.add(labelUML);
                 frameUML.setSize(1920, 1080);
+                frameUML.setLocationRelativeTo(null);
                 frameUML.setResizable(false);
                 frameUML.setVisible(true);
             }
