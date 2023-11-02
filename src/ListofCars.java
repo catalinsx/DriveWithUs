@@ -33,7 +33,6 @@ public class ListofCars {
         }
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
         Font font = new Font("Arial", Font.ITALIC, 20);
-        boolean ok=false;
        for(Car car : cars){
            if(((car.getClassCar().equals(clasaCautata)))
                    &&((car.getBrand().equals(brandCautat))||(Objects.equals(brandCautat, "Any")))
@@ -41,7 +40,6 @@ public class ListofCars {
                    &&((car.getTraction().equals(tractionCautat))||(Objects.equals(tractionCautat, "Any")))
                    &&((car.getFuelType().equals(fuelTypeCautat))||(Objects.equals(fuelTypeCautat, "Any"))))
            {
-               ok=true;
            if(car instanceof Sport sport){
                // Blocul de cod se execută doar dacă obiectul 'car' este o instanță a clasei 'Sport'
                // sau a unei subclase a clasei 'Sport'
@@ -154,16 +152,6 @@ public class ListofCars {
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
            }}
        }}
-       if(!ok)
-       {
-           JOptionPane.showMessageDialog(null, "!!!NU AVEM PE STOC MASINI CU ACESTE SPECIFICATII!!!", "Error", JOptionPane.ERROR_MESSAGE);
-           carsFrame.setVisible(false);
-//           System.out.println("Nu exista masini.");
-//           JLabel numeLabel = new JLabel("NU AVEM PE STOC MASINI CU ACESTE SPECIFICATII.");
-//           numeLabel.setForeground(Color.black);
-//           numeLabel.setFont(font);
-//           panel1.add(numeLabel);
-       }
     }
     private static JLabel getImageLabel(JFrame carsFrame, Sport sport) {
         JLabel imageLabel = new JLabel();
@@ -221,5 +209,21 @@ public class ListofCars {
             }
         });
         return imageLabel;
+    }
+    public static boolean existaMasini(ArrayList<Car> cars,String clasaCautata,String brandCautat,String gearBoxCautat, String tractionCautat, String fuelTypeCautat) {
+        boolean ok = false;
+        for (Car car : cars) {
+            if (((car.getClassCar().equals(clasaCautata)))
+                    && ((car.getBrand().equals(brandCautat)) || (Objects.equals(brandCautat, "Any")))
+                    && ((car.getGearBox().equals(gearBoxCautat)) || (Objects.equals(gearBoxCautat, "Any")))
+                    && ((car.getTraction().equals(tractionCautat)) || (Objects.equals(tractionCautat, "Any")))
+                    && ((car.getFuelType().equals(fuelTypeCautat)) || (Objects.equals(fuelTypeCautat, "Any")))) {
+                ok = true;
+            }
+        }
+        return ok;
+    }
+    public ArrayList<Car> getCars(){
+        return cars;
     }
 }

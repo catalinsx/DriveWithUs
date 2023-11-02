@@ -91,6 +91,8 @@ public class Dashboard {
                     fuelTypeCautat="Benzina";
                 JFrame carsFrame = new JFrame("Cars");
                 ListofCars listofCars = new ListofCars(carsFrame,clasaCautata,brandCautat,gearBoxCautat,tractionCautat,fuelTypeCautat);
+                if(ListofCars.existaMasini(listofCars.getCars(),clasaCautata,brandCautat,gearBoxCautat,tractionCautat,fuelTypeCautat))
+                {
                 JScrollPane sp = new JScrollPane(listofCars.panel1);
                 sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
                 sp.getVerticalScrollBar().setUnitIncrement(20);
@@ -99,6 +101,11 @@ public class Dashboard {
                 carsFrame.setResizable(false);
                 carsFrame.setLocationRelativeTo(null);
                 carsFrame.setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "!!!NU AVEM PE STOC MASINI CU ACESTE SPECIFICATII!!!", "Error", JOptionPane.ERROR_MESSAGE);
+                    carsFrame.setVisible(false);
+                }
             }
         });
     }
