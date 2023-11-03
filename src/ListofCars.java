@@ -1,3 +1,5 @@
+import rentacar.logging.FileLogger;
+import rentacar.logging.Logger;
 import rentacar.vehicles.Car;
 import rentacar.vehicles.Luxury;
 import rentacar.vehicles.Premium;
@@ -14,6 +16,7 @@ import java.util.Objects;
 public class ListofCars {
     public JPanel panel1;
     public  ArrayList<Car> cars;
+    Logger logger= FileLogger.getInstance();
 
     public ListofCars(JFrame carsFrame,String clasaCautata,String brandCautat,String gearBoxCautat,String tractionCautat,String fuelTypeCautat) {
         cars = new ArrayList<>();
@@ -77,6 +80,7 @@ public class ListofCars {
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
                panel1.add(new JSeparator(SwingConstants.HORIZONTAL));
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
+               logger.logEvent("User selected a: " + sport.getBrand());
                }
            else if(car instanceof Luxury luxury)
            {
@@ -113,6 +117,7 @@ public class ListofCars {
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
                panel1.add(new JSeparator(SwingConstants.HORIZONTAL));
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
+               logger.logEvent("User selected a: " + luxury.getBrand());
            }
            else if(car instanceof Premium premium)
            {
@@ -150,8 +155,10 @@ public class ListofCars {
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
                panel1.add(new JSeparator(SwingConstants.HORIZONTAL));
                panel1.add(Box.createRigidArea(new Dimension(15, 35)));
+               logger.logEvent("User selected a: " + premium.getBrand());
            }}
-       }}
+       }
+       }
     }
     private static JLabel getImageLabel(JFrame carsFrame, Sport sport) {
         JLabel imageLabel = new JLabel();

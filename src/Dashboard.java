@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import rentacar.logging.*;
 
+import rentacar.logging.FileLogger;
+import rentacar.logging.Logger;
 import rentacar.vehicles.*;
 public class Dashboard {
     private JPanel dashboardPanel;
@@ -74,6 +76,7 @@ public class Dashboard {
                 loginFrame.setResizable(false);
                 loginFrame.setLocationRelativeTo(null);
 
+
             }
         });
         searchForACarButton.addActionListener(new ActionListener() {
@@ -116,8 +119,6 @@ public class Dashboard {
     }
 
     public static void main(String[] args) {
-        Logger logger = FileLogger.getInstance();
-        logger.logEvent("The app has opened.");
         JFrame frame = new JFrame("Dashboard");
         Dashboard dashboard = new Dashboard();
         frame.setContentPane(dashboard.dashboardPanel);
@@ -132,5 +133,7 @@ public class Dashboard {
         frame.setSize(1366, 668 );
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
+        Logger logger= FileLogger.getInstance();
+        logger.logEvent("DriveWithUs is online!");
     }
 }

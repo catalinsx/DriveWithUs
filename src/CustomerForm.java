@@ -1,4 +1,6 @@
 import rentacar.customers.Customer;
+import rentacar.logging.FileLogger;
+import rentacar.logging.Logger;
 import rentacar.vehicles.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,11 +23,12 @@ public class CustomerForm {
     private JTextField cnpTextField;
     private JTextField daysTextField;
     private JTextField pretTotalTextField;
+    Logger logger=FileLogger.getInstance();
     private ArrayList<Customer> customers;
     public CustomerForm(JFrame billFrame,Object object) {
         ImageIcon imageIcon = new ImageIcon("src/Images/rentalform.png");
         imageLabel.setIcon(imageIcon);
-        customers = loadCustomers(); // Încărcați lista de clienți la pornirea formularului
+        customers = loadCustomers();
 
         completeButton.addActionListener(new ActionListener() {
             @Override
@@ -64,8 +67,8 @@ public class CustomerForm {
                                             customers.add(customer);
 
                                             saveCustomers(customers);
+                                            logger.logEvent("Customer saved!");
 
-                                            System.out.println("Customer data was successfully saved.");
 
                                             ImageIcon imageIcon1 = new ImageIcon("src/Images/thanku.png");
                                             imageThanku.setIcon(imageIcon1);

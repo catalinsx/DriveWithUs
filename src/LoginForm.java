@@ -30,7 +30,7 @@ public class LoginForm {
                 else{
                     JOptionPane.showMessageDialog(null, "Datele introduse sunt gresite");
                     Logger logger=FileLogger.getInstance();
-                    logger.logEvent("unauthorized login(Someone try to acces admin panel).");
+                    logger.logEvent("Unauthorized login(Someone tried to access admin panel).");
                 }
             }
         });
